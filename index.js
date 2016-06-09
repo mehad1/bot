@@ -39,9 +39,9 @@ app.post('/webhook/', function (req, res) {
 			
 			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience         "))
 			sendTextMessage(sender, ("To learn the best deals around ask me regarding the following          "+
-			"1.Best iftar in Dhaka        "+
-			"2.Best discounts in Dhaka       "+
-			"3.Buy one get one free        "))
+			"1.Best iftar in Dhaka           "+
+			"2.Best discounts in Dhaka         "+
+			"3.Buy one get one free"))
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
