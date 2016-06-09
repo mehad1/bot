@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am bot')
+	res.send('hello world i am nunu bot')
 })
 
 // for facebook verification
