@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am nunu bot')
+	res.send('hello world i am nunu1 bot')
 })
 
 // for facebook verification
@@ -36,7 +36,8 @@ app.post('/webhook/', function (req, res) {
 				sendGenericMessage(sender)
 				continue
 			}
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			
+			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience"))
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
