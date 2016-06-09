@@ -34,15 +34,20 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text === 'Generic') {
+			if (text === 'Best iftar') {
 				sendGenericMessage(sender)
 				continue
 			}
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			sendTextMessage(sender, "Hi! I am offerbot here to guide you for the best dining experience")
+			sendTextMessage(sender, "To learn the best deals around ask me regarding the following          1.Best iftar in Dhaka           2.Best discounts in Dhaka         3.Buy one get one free")
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			if (text === 'payload1') {
+				sendTextMessage(sender, "Taste of ramadan | Buffet | Iftar & Dinner | BDT 4999 Net", token)
+				continue
+			}
+			
 			continue
 		}
 	}
@@ -79,17 +84,17 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "First card",
-					"subtitle": "Element #1 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"title": "Westin",
+					"subtitle": "Welcome to the land of mouth watering desserts",
+					"image_url": "http://imgur.com/rmgOfcV.jpg",
 					"buttons": [{
 						"type": "web_url",
-						"url": "https://www.messenger.com",
-						"title": "web url"
+						"url": "http://i.imgur.com/rmgOfcV.jpg",
+						"title": "Go to Webpage"
 					}, {
 						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
+						"title": "See More",
+						"payload": "payload1",
 					}],
 				}, {
 					"title": "Second card",
