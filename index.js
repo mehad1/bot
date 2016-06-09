@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am nunu1 bot')
+	res.send('hello world i am nunu bot')
 })
 
 // for facebook verification
@@ -32,22 +32,17 @@ app.post('/webhook/', function (req, res) {
 		sender = event.sender.id
 		if (event.message && event.message.text) {
 			text = event.message.text
-			if (text === 'Best iftar in Dhaka') {
+			if (text === 'Generic') {
 				sendGenericMessage(sender)
 				continue
 			}
-			
-			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience         "))
-			//sendTextMessage(sender, ("To learn the best deals around ask me regarding the following"+newline+"1.Best iftar in Dhaka"+newline+"2.Best discounts in Dhaka"+newline+"3.Buy one get one free"))
+			sendTextMessage("Hi! I am offerbot here to guide you for the best dining experience")
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
-			if (text === 'Payload1') {
-				sendTextMessage(sender, "Relish Ramadan with special kebabs, Orange Saffron Jelabis and Haleem", token)
-        			
-          
-				continue
-			}
+			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			continue
+		}
 	}
 	res.sendStatus(200)
 })
@@ -82,17 +77,17 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "Westin",
-					"subtitle": "Westin is reputed for their mouth watering desserts",
-					"image_url": "http://i.imgur.com/rmgOfcV.jpg",
+					"title": "First card",
+					"subtitle": "Element #1 of an hscroll",
+					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 					"buttons": [{
 						"type": "web_url",
-						"url": "http://i.imgur.com/rmgOfcV.jpg",
-						"title": "Go To Website"
+						"url": "https://www.messenger.com",
+						"title": "web url"
 					}, {
 						"type": "postback",
-						"title": "See More",
-						"payload": "Payload1",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
 					}],
 				}, {
 					"title": "Second card",
