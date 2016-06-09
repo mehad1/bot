@@ -38,6 +38,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience"))
+			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience"))
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
