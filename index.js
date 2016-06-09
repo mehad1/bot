@@ -36,11 +36,30 @@ app.post('/webhook/', function (req, res) {
 				sendGenericMessage(sender)
 				continue
 			}
+			
+			elseif (text === 'hagu' || 'nunu') {
+				sendGenericMessage(sender)
+				continue
+			}
+			
+			
+			
+			
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+
 		}
+		
+		***********************************
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			if (text === 'Payload1') {
+				sendTextMessage(sender, "Relish Ramadan with speciality kebabs, Orange Saffron Jelabis and Haleem", token)
+				sendTextMessage(sender, "Iftar Dinner Buffet 4999 Including tax ( Seasonal Taste)
+							Iftar Dinner Buffet 3500 Including tax ( Splash)
+							Sehri Buffet 2100 including tax (Daily Treats)", token)
+				continue
+			}
+		//	sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 			continue
 		}
 	}
@@ -77,17 +96,17 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "First card",
-					"subtitle": "Element #1 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"title": "Westin",
+					"subtitle": "Westin is reputed for their mouth watering desserts",
+					"image_url": "http://i.imgur.com/rmgOfcV.jpg",
 					"buttons": [{
-						"type": "web_url",
+						"type": "Go to website",
 						"url": "https://www.messenger.com",
 						"title": "web url"
 					}, {
-						"type": "postback",
+						"type": "See More",
 						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
+						"payload": "Payload1",
 					}],
 				}, {
 					"title": "Second card",
