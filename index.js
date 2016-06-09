@@ -32,16 +32,21 @@ app.post('/webhook/', function (req, res) {
 		sender = event.sender.id
 		if (event.message && event.message.text) {
 			text = event.message.text
-			if (text === 'hagu' || 'nunu') {
+			if (text === 'best restaurent for iftar in Dhaka' ||
+			             'best place for iftar in Dhaka' ||
+			             'best place to dine for iftar' ||
+			             'best place for iftar'
+			
+			) {
 				sendGenericMessage(sender)
 				continue
 			}
 			
-			elseif (text === 'hagu' || 'nunu') {
-				sendGenericMessage(sender)
-				continue
-			}
-			
+			//elseif (text === 'hagu' || 'nunu') {
+			//	sendGenericMessage(sender)
+			//	continue
+			//}
+		
 			
 			
 			
