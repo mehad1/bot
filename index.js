@@ -1,7 +1,9 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var request = require('request')
-var app = express()
+'use strict'
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -13,7 +15,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am nunu bot')
+	res.send('hello world i am a new bot')
 })
 
 // for facebook verification
@@ -26,20 +28,20 @@ app.get('/webhook/', function (req, res) {
 
 // to post data
 app.post('/webhook/', function (req, res) {
-	messaging_events = req.body.entry[0].messaging
-	for (i = 0; i < messaging_events.length; i++) {
-		event = req.body.entry[0].messaging[i]
-		sender = event.sender.id
+	let messaging_events = req.body.entry[0].messaging
+	for (let i = 0; i < messaging_events.length; i++) {
+		let event = req.body.entry[0].messaging[i]
+		let sender = event.sender.id
 		if (event.message && event.message.text) {
-			text = event.message.text
+			let text = event.message.text
 			if (text === 'Generic') {
 				sendGenericMessage(sender)
 				continue
 			}
-			sendTextMessage("Hi! I am offerbot here to guide you for the best dining experience")
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
-			text = JSON.stringify(event.postback)
+			let text = JSON.stringify(event.postback)
 			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 			continue
 		}
@@ -47,12 +49,12 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-var token = "EAABglJwRT9kBAEAPefGLTX5s0N8csnn0my4ND3lPQgkPZBX6GZB4qlykSoqIOaKwtMEqaIJqibX1DyoMACoGdO2E0jdmaK2ZBpcjsBXLZBhqLXeiMZCUf5AZBpMqatvGjCtvDIR1tYlu6mKsswaI4996mXfZAQ4vibMX8tvZAYaU5AZDZD"
+
+const token = "EAABglJwRT9kBAEk6JS8xmrUXqHSN1MOOcBeZB4gmhVcrYbT0nZBVtr63FkyZAOCEbcPrDfPm0ZAWTKUVBqoO5iwEZAl4L1UNtmEScWZBVTPaZBE30mVVZCj1RkZCvYMFPfovZA6vOi2zHr5i2QKTpBRboOXnbqeA5n11ZAliPSua95xnAZDZD"
 
 function sendTextMessage(sender, text) {
-	messageData = {
-		text:text
-	}
+	let messageData = { text:text }
+	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token:token},
@@ -71,23 +73,23 @@ function sendTextMessage(sender, text) {
 }
 
 function sendGenericMessage(sender) {
-	messageData = {
+	let messageData = {
 		"attachment": {
 			"type": "template",
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "Westin",
-					"subtitle": "Westin is reputed for their mouth watering desserts",
-					"image_url": "http://i.imgur.com/rmgOfcV.jpg",
+					"title": "First card",
+					"subtitle": "Element #1 of an hscroll",
+					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 					"buttons": [{
 						"type": "web_url",
-						"url": "http://i.imgur.com/rmgOfcV.jpg",
-						"title": "Go To Website"
+						"url": "https://www.messenger.com",
+						"title": "web url"
 					}, {
 						"type": "postback",
-						"title": "See More",
-						"payload": "Payload1",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
 					}],
 				}, {
 					"title": "Second card",
