@@ -32,19 +32,24 @@ app.post('/webhook/', function (req, res) {
 		sender = event.sender.id
 		if (event.message && event.message.text) {
 			text = event.message.text
-			if (text === 'Generic') {
+			if (text === 'Best iftar in Dhaka') {
 				sendGenericMessage(sender)
 				continue
 			}
 			
 			sendTextMessage(sender, ("Hi! I am offerbot here to guide you for the best dining experience         "))
-			sendTextMessage(sender, ("To learn the best deals around ask me regarding the following"+newline+"1.Best iftar in Dhaka"+newline+"2.Best discounts in Dhaka"+newline+"3.Buy one get one free"))
+			//sendTextMessage(sender, ("To learn the best deals around ask me regarding the following"+newline+"1.Best iftar in Dhaka"+newline+"2.Best discounts in Dhaka"+newline+"3.Buy one get one free"))
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-			continue
-		}
+			if (text === 'Payload1') {
+				sendTextMessage(sender, "Relish Ramadan with special kebabs, Orange Saffron Jelabis and Haleem", token)
+        			sendTextMessage(sender, "Iftar Dinner Buffet 4999 Including tax ( Seasonal Taste)", token)
+        			sendTextMessage(sender, "Sehri Buffet 2100 including tax (Daily Treats)", token)
+        			sendTextMessage(sender, "Iftar Dinner Buffet 3500 Including tax ( Splash)", token)
+          
+				continue
+			}
 	}
 	res.sendStatus(200)
 })
@@ -79,17 +84,17 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "First card",
-					"subtitle": "Element #1 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"title": "Westin",
+					"subtitle": "Westin is reputed for their mouth watering desserts",
+					"image_url": "http://i.imgur.com/rmgOfcV.jpg",
 					"buttons": [{
 						"type": "web_url",
-						"url": "https://www.messenger.com",
-						"title": "web url"
+						"url": "http://i.imgur.com/rmgOfcV.jpg",
+						"title": "Go To Website"
 					}, {
 						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
+						"title": "See More",
+						"payload": "Payload1",
 					}],
 				}, {
 					"title": "Second card",
