@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am nu bot')
+	res.send('hello world i am nunu bot')
 })
 
 // for facebook verification
@@ -32,39 +32,15 @@ app.post('/webhook/', function (req, res) {
 		sender = event.sender.id
 		if (event.message && event.message.text) {
 			text = event.message.text
-			if (text === 'best restaurent for iftar in Dhaka' ||
-			             'best place for iftar in Dhaka' ||
-			             'best place to dine for iftar' ||
-			             'best place for iftar'
-			
-			) {
+			if (text === 'Generic') {
 				sendGenericMessage(sender)
 				continue
 			}
-			
-			//elseif (text === 'hagu' || 'nunu') {
-			//	sendGenericMessage(sender)
-			//	continue
-			//}
-		
-			
-			
-			
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-
 		}
-		
-		***********************************
 		if (event.postback) {
 			text = JSON.stringify(event.postback)
-			if (text === 'Payload1') {
-				sendTextMessage(sender, "Relish Ramadan with speciality kebabs, Orange Saffron Jelabis and Haleem", token)
-				sendTextMessage(sender, "Iftar Dinner Buffet 4999 Including tax ( Seasonal Taste)
-							Iftar Dinner Buffet 3500 Including tax ( Splash)
-							Sehri Buffet 2100 including tax (Daily Treats)", token)
-				continue
-			}
-		//	sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 			continue
 		}
 	}
@@ -101,17 +77,17 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "Westin",
-					"subtitle": "Westin is reputed for their mouth watering desserts",
-					"image_url": "http://i.imgur.com/rmgOfcV.jpg",
+					"title": "First card",
+					"subtitle": "Element #1 of an hscroll",
+					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 					"buttons": [{
-						"type": "Go to website",
+						"type": "web_url",
 						"url": "https://www.messenger.com",
 						"title": "web url"
 					}, {
-						"type": "See More",
+						"type": "postback",
 						"title": "Postback",
-						"payload": "Payload1",
+						"payload": "Payload for first element in a generic bubble",
 					}],
 				}, {
 					"title": "Second card",
