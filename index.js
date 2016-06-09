@@ -44,9 +44,7 @@ app.post('/webhook/', function (req, res) {
 			text = JSON.stringify(event.postback)
 			if (text === 'Payload1') {
 				sendTextMessage(sender, "Relish Ramadan with special kebabs, Orange Saffron Jelabis and Haleem", token)
-        			sendTextMessage(sender, "Iftar Dinner Buffet 4999 Including tax ( Seasonal Taste)", token)
-        			sendTextMessage(sender, "Sehri Buffet 2100 including tax (Daily Treats)", token)
-        			sendTextMessage(sender, "Iftar Dinner Buffet 3500 Including tax ( Splash)", token)
+        			
           
 				continue
 			}
