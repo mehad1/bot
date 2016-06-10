@@ -173,7 +173,7 @@ function sendGenericMessage(sender) {
               
               "type": "postback",
               "title": "Call Postback",
-              "payload": {"url": "http://i.imgur.com/zYIlgBl.png"},
+              "payload": "Payload for second bubble",
             }],
           }, {
             "title": "touch",
