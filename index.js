@@ -43,6 +43,12 @@ app.post('/webhook/', function (req, res) {
 				sendButtonMessage(sender)
 				continue
 			}
+			
+			else if (text === 'Image') {
+				sendImageMessage(sender)
+				continue
+			}
+			
 			sendTextMessage(sender, "Hi! I am offerbot here to guide you for the best dining experience")
 			sendTextMessage(sender, "To learn the best deals around ask me regarding the following          1.Best iftar in Dhaka           2.Best discounts in Dhaka         3.Buy one get one free")
 		}
@@ -119,7 +125,34 @@ function sendButtonMessage(sender) {
     })
   }
 
+function sendImageMessage(sender) {
+  let messageData = {
 
+      "attachment": {
+        "type": "image",
+        "payload": {
+          "url": "http://i.imgur.com/zYIlgBl.png"
+        }
+      }
+    }
+    request({
+  		url: 'https://graph.facebook.com/v2.6/me/messages',
+  		qs: {access_token:token},
+  		method: 'POST',
+  		json: {
+  			recipient: {id:sender},
+  			message: messageData,
+  		}
+  	}, function(error, response, body) {
+  		if (error) {
+  			console.log('Error sending messages: ', error)
+  		} else if (response.body.error) {
+  			console.log('Error: ', response.body.error)
+  		}
+  	})
+  }
+
+ 
 function sendGenericMessage(sender) {
   let messageData = {
 
