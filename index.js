@@ -33,11 +33,9 @@ app.post('/webhook/', function (req, res) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
-			let intext = event.message.text
-			String match = "iftar";
-			boolean text = StringUtils.containsIgnoreCase(intext, match);
-
-			if (text === True) {
+			let Text = event.message.text
+			
+			if (text === "Iftar") {
 				sendGenericMessage(sender)
 				continue
 			}
