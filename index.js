@@ -171,7 +171,7 @@ function sendGenericMessage(sender) {
               "title": "Open Web URL"
             }, {
               "type": "image",
-              "url": "http://i.imgur.com/zYIlgBl.png",
+              "payload": {"url": "http://i.imgur.com/zYIlgBl.png"},
               "title": "image"
             }, {
               "type": "postback",
