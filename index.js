@@ -99,7 +99,7 @@ function sendGenericMessage(sender) {
 				}, {
 					"title": "Second card",
 					"subtitle": "Element #2 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+					"image_url": "https://ec.europa.eu/programmes/horizon2020/sites/horizon2020/files/styles/h2020_large/public/100246122-2_WEB.png?itok=Rn4AM-lz",
 					"buttons": [{
 						"type": "postback",
 						"title": "Postback",
