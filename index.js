@@ -78,53 +78,60 @@ function sendTextMessage(sender, text) {
 }
 
 function sendGenericMessage(sender) {
-	let messageData = {
-		"attachment": {
-			"type": "template",
-			"payload": {
-				"template_type": "generic",
-				"elements": [{
-					"title": "Westin",
-					"subtitle": "Welcome to the land of mouth watering desserts",
-					"image_url": "http://imgur.com/rmgOfcV.jpg",
-					"buttons": [{
-						"type": "web_url",
-						"url": "http://i.imgur.com/rmgOfcV.jpg",
-						"title": "Go to Webpage"
-					}, {
-						"type": "postback",
-						"title": "See More",
-						"payload": "payload1",
-					}],
-				}, {
-					"title": "Second card",
-					"subtitle": "Element #2 of an hscroll",
-					"image_url": "https://ec.europa.eu/programmes/horizon2020/sites/horizon2020/files/styles/h2020_large/public/100246122-2_WEB.png?itok=Rn4AM-lz",
-					"buttons": [{
-						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for second element in a generic bubble",
-					}],
-				}]
-			}
-		}
-	}
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
-		method: 'POST',
-		json: {
-			recipient: {id:sender},
-			message: messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error)
-		}
-	})
-}
+  let messageData = {
+
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            "title": "rift",
+            "subtitle": "Next-generation virtual reality",
+            "item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "buttons": [{
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Open Web URL"
+            }, {
+              "type": "postback",
+              "title": "Call Postback",
+              "payload": "Payload for first bubble",
+            }],
+          }, {
+            "title": "touch",
+            "subtitle": "Your Hands, Now in VR",
+            "item_url": "https://www.oculus.com/en-us/touch/",
+            "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
+            "buttons": [{
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/touch/",
+              "title": "Open Web URL"
+            }, {
+              "type": "postback",
+              "title": "Call Postback",
+              "payload": "Payload for second bubble",
+            }]
+          }]
+        }
+      }
+    }
+    request({
+  		url: 'https://graph.facebook.com/v2.6/me/messages',
+  		qs: {access_token:token},
+  		method: 'POST',
+  		json: {
+  			recipient: {id:sender},
+  			message: messageData,
+  		}
+  	}, function(error, response, body) {
+  		if (error) {
+  			console.log('Error sending messages: ', error)
+  		} else if (response.body.error) {
+  			console.log('Error: ', response.body.error)
+  		}
+  	})
+  }
 
 // spin spin sugar
 app.listen(app.get('port'), function() {
