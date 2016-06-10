@@ -38,6 +38,11 @@ app.post('/webhook/', function (req, res) {
 				sendGenericMessage(sender)
 				continue
 			}
+			
+			else if (text === 'Button') {
+				sendButtonMessage(sender)
+				continue
+			}
 			sendTextMessage(sender, "Hi! I am offerbot here to guide you for the best dining experience")
 			sendTextMessage(sender, "To learn the best deals around ask me regarding the following          1.Best iftar in Dhaka           2.Best discounts in Dhaka         3.Buy one get one free")
 		}
@@ -76,6 +81,44 @@ function sendTextMessage(sender, text) {
 		}
 	})
 }
+
+function sendButtonMessage(sender) {
+  let messageData = {
+
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": "This is test text",
+          "buttons":[{
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Open Web URL"
+          }, {
+            "type": "postback",
+            "title": "Call Postback",
+            "payload": "Developer defined postback"
+          }]
+        }
+      }
+    }
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: messageData,
+      }
+    }, function(error, response, body) {
+      if (error) {
+        console.log('Error sending messages: ', error)
+      } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+      }
+    })
+  }
+
 
 function sendGenericMessage(sender) {
   let messageData = {
