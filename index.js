@@ -170,13 +170,10 @@ function sendGenericMessage(sender) {
               "url": "https://www.oculus.com/en-us/rift/",
               "title": "Open Web URL"
             }, {
-              "type": "image",
-              "payload": {"url": "http://i.imgur.com/zYIlgBl.png"},
-              "title": "image"
-            }, {
+              
               "type": "postback",
               "title": "Call Postback",
-              "payload": "Payload for first bubble",
+              "payload": {"url": "http://i.imgur.com/zYIlgBl.png"},
             }],
           }, {
             "title": "touch",
