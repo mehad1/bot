@@ -54,8 +54,12 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			if (text === '"payload":"12"') {
+			sendTextMessage(sender, "Postback received1: ", token)
+			sendTextMessage(sender, "Postback received2: ")
 			continue
+			}
+			sendTextMessage(sender, "Postback received3: "+text.substring(0, 200), token)
 		}
 	}
 	res.sendStatus(200)
