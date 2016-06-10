@@ -54,7 +54,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			if (text === '"payload":"12"') {
+			if (text === '{"payload":"12"}') {
 			sendTextMessage(sender, "Postback received1: ", token)
 			sendTextMessage(sender, "Postback received2: ")
 			continue
@@ -104,6 +104,7 @@ function sendButtonMessage(sender) {
             "type": "postback",
             "title": "Call Postback",
             "payload": "12"
+            
           }]
         }
       }
