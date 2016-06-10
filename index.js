@@ -54,11 +54,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			if (text === '12') {
-				sendTextMessage(sender, "Taste of ramadan | Buffet | Iftar & Dinner | BDT 4999 Net")
-				continue
-			}
-			
+			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
 			continue
 		}
 	}
