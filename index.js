@@ -33,9 +33,8 @@ app.post('/webhook/', function (req, res) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
-			let Text = event.message.text
-			
-			if (text === "Iftar") {
+			let text = event.message.text
+			if (text === 'Best iftar') {
 				sendGenericMessage(sender)
 				continue
 			}
@@ -50,13 +49,14 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 
-			
+			sendTextMessage(sender, "Hi! I am offerbot here to guide you for the best dining experience")
+			sendTextMessage(sender, "To learn the best deals around ask me regarding the following \n1.Best iftar in Dhaka \n2.Best discounts in Dhaka \n3.Buy one get one free")
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
 			if (text === '{"payload":"12"}') {
 			sendTextMessage(sender, "Postback received1: ", token)
-			sendTextMessage(sender, id:sender)
+			sendTextMessage(sender, "Postback received2: ")
 			continue
 			}
 			sendTextMessage(sender, "Postback received3: "+text.substring(0, 200), token)
@@ -88,51 +88,7 @@ function sendTextMessage(sender, text) {
 	})
 }
 
-function welcomeMessage1(sender){
-	sendTextMessage(sender, "Hi! I am offerbot \nI'm here to guide you for the best dining experience in the city")
-	sendTextMessage(sender, "I'll get the best reviews and the best deals around you. You can ask me regarding the following by simply typing or pressing the buttions\n1.Best iftar in Dhaka \n2.Best discounts in Dhaka \n3.Buy one get one free")
-}
-
-function welcomeMessage2(sender) {
-  let messageData = {
-
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "button",
-          "text": "Best iftar in Dhaka",
-          "buttons":[{
-            "type": "web_url",
-            "url": "https://www.oculus.com/en-us/rift/",
-            "title": "Open Web URL"
-          }, {
-            "type": "postback",
-            "title": "Call Postback",
-            "payload": "Developer defined postback"
-          }]
-        }
-      }
-    }
-    request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token:token},
-      method: 'POST',
-      json: {
-        recipient: {id:sender},
-        message: messageData,
-      }
-    }, function(error, response, body) {
-      if (error) {
-        console.log('Error sending messages: ', error)
-      } else if (response.body.error) {
-        console.log('Error: ', response.body.error)
-      }
-    })
-  }
-
-
 function sendButtonMessage(sender) {
-	
   let messageData = {
 
       "attachment": {
