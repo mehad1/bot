@@ -33,8 +33,10 @@ app.post('/webhook/', function (req, res) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
 		let match = "Mehad"
+		
 		if (event.message && event.message.text) {
 			let text = event.message.text
+			let shafin = text.toLowerCase()
 			if (text === 'Best iftar') {
 				welcomeMessage2(sender)
 				continue
@@ -50,7 +52,7 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			
-			sendTextMessage(sender, match+text)
+			sendTextMessage(sender, shafin+"  "+text)
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
 			welcomeMessage2(sender)
 			welcomeMessage3(sender)
