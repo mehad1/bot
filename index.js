@@ -32,12 +32,19 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		let match = "Mehad"
+		let match = "best"
 		
 		if (event.message && event.message.text) {
-			let text = event.message.text
-			let shafin = text.toLowerCase()
-			if (text === 'Best iftar') {
+			let intext = event.message.text
+			let text = intext.toLowerCase()
+			
+			if (text.indexOf(match) >= 0) {
+			          let best="True";
+			} else {
+				  let best="False";
+			}
+			if (best === 'True') {
+				sendTextMessage(sender, "it works")
 				welcomeMessage2(sender)
 				continue
 			}
