@@ -221,7 +221,7 @@ function welcomeMessage2(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "Ask me regarding the following by simply typing or clicking the buttons",
+          "text": "You can ask me regarding the following inquiries",
           
           "buttons":[{
             
@@ -265,7 +265,7 @@ function welcomeMessage3(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": " ",
+          "text": "You can also click on the buttons",
 
           "buttons":[{
 
