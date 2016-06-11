@@ -225,34 +225,14 @@ function welcomeMessage2(sender) {
           
           "buttons":[{
             
-            "type": "postback",
-            "title": "1. Best iftar in Dhaka",
-            "payload": "1.1"
-			}, {
-						"type": "postback",
-						"title": "2. Best discounts offers in Dhaka",
-						"payload": "1.2"
-					}, {
-						"type": "postback",
-						"title": "3. Buy 1 & Get 1 Free offers",
-						"payload": "1.3"
-					}, {
-						"type": "postback",
-						"title": "4. Exclusive Offerbot Discounts",
-						"payload": "1.4"
-          }, {
-            "type": "web_url",
-            "url": "https://www.oculus.com/en-us/rift/",
-            "title": "5. Visit Website"
-          }, {
-            "type": "postback",
-            "title": "6. Settings",
-            "payload": "1.6"
-          }, {
-            "type": "postback",
-            "title": "7. Help",
-            "payload": "1.7"
-
+	      "type": "postback",
+	      "title": "1. Best iftar in Dhaka",
+	      "payload": "1.1"
+	}, {
+		"type": "postback",
+		"title": "2. Best discounts offers in Dhaka",
+		"payload": "1.2"
+					
           }]
         }
       }
