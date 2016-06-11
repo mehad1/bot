@@ -265,7 +265,7 @@ function welcomeMessage3(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "Ask me regarding the following by simply typing or clicking the buttons",
+          "text": "",
 
           "buttons":[{
 
