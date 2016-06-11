@@ -50,8 +50,8 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
-			
 			welcomeMessage2(sender)
+			welcomeMessage3(sender)
 			}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
@@ -258,6 +258,50 @@ function welcomeMessage2(sender) {
     })
   }
 
+function welcomeMessage3(sender) {
+  let messageData = {
+
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          //"text": "Ask me regarding the following by simply typing or clicking the buttons",
+
+          "buttons":[{
+
+		"type": "postback",
+		"title": "Offerbot Discounts",
+		"payload": "1.4"
+          }, {
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Visit Website"
+          }, {
+            "type": "postback",
+            "title": "Settings",
+            "payload": "1.6"
+          
+
+          }]
+        }
+      }
+    }
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: messageData,
+      }
+    }, function(error, response, body) {
+      if (error) {
+        console.log('Error sending messages: ', error)
+      } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+      }
+    })
+  }
 
 
 
