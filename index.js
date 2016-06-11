@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
-			          iftar(sender)
+			          iftarMessage(sender)
 			          continue
 			}
 		
@@ -180,7 +180,7 @@ function sendImageMessage(sender) {
   }
 
 
-function iftar(sender) {
+function iftarMessage(sender) {
   let messageData = {
 
       "attachment": {
