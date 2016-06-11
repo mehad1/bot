@@ -55,25 +55,12 @@ app.post('/webhook/', function (req, res) {
 			          continue
 			}
 
-			else if (match.indexOf(settings) >= 0) {
-			          sendTextMessage(sender, "settings is here")
-			          continue
-			}
-			
 			else if (match.indexOf(discount) >= 0) && (shafin.indexOf(offerbot) < 0) {
 			          sendTextMessage(sender, "best dicounts are here")
 			          continue
 			}
-
-			else if (match.indexOf(buy) >= 0) && (shafin.indexOf(get1) >= 0) {
-			          sendTextMessage(sender, "buy1 & get1 is here")
-			          continue
-			}
-
-			else if (match.indexOf(offerbot) >= 0) && (shafin.indexOf(discount) >= 0) {
-			          sendTextMessage(sender, "offerbot discount is here")
-			          continue
-			}
+			
+			
 			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
 			welcomeMessage2(sender)
