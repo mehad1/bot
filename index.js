@@ -80,12 +80,35 @@ app.post('/webhook/', function (req, res) {
 			}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			if (text === '{"payload":"12"}') {
-			sendTextMessage(sender, "Postback received1: ", token)
-			sendTextMessage(sender, "Postback received2: ")
+			if (text === '{"payload":"reserve"}') {
+			sendTextMessage(sender, "For reservation & bookings dial +88029891988")
 			continue
 			}
-			sendTextMessage(sender, "Postback received3: "+text.substring(0, 200), token)
+
+			else if (text === '{"payload":"westin"}') {
+			sendTextMessage(sender, "Relish Ramadan with Westin’s specialty Kebabs, Orange Saffron Jalebis and Haleem \n Taste of Ramadan | Buffet | Iftar and Dinner | BDT 4,999 Net\nIftar Bonanza | Buffet | Iftar and Dinner | BDT 3,500 Net\nIftar Treats and Takeaway | Iftar | BDT 1,600Net")
+			continue
+			}
+
+			else if (text === '{"payload":"amari"}') {
+			sendTextMessage(sender, "Celebrate the breaking of fast with us \n Take away Iftar | BDT 1,650++ \nCascade Iftar and Suhoor Delights | BDT 1,800++\nBanquet Delights | Staring from BDT 1,900++\n")
+			continue
+			}
+
+			else if (text === '{"payload":"glass"}') {
+			sendTextMessage(sender, "Savor the spirit of Ramadan with our special Iftar and Dinner Buffet at BDT 1,499 NET ")
+			continue
+			}
+
+			else if (text === '{"payload":"water"}') {
+			sendTextMessage(sender, "Ramadan Kareem with incredible Iftar Buffet for BDT 1,295++")
+			continue
+			}
+
+			else if (text === '{"payload":"moka"}') {
+			sendTextMessage(sender, "MOKA Bistro Presents IFTAR and DINNER BUFFET for Ramadan 2016 specially priced at BDT999++")
+			continue
+			}
 		}
 	}
 	res.sendStatus(200)
