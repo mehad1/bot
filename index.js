@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
-			          sendTextMessage(sender, "iftar is here")
+			          sendGenericMessage(sender)
 			          continue
 			}
 		
@@ -188,33 +188,98 @@ function sendGenericMessage(sender) {
         "payload": {
           "template_type": "generic",
           "elements": [{
+            
             "title": "rift",
             "subtitle": "Next-generation virtual reality",
             "item_url": "https://www.oculus.com/en-us/rift/",
             "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+
             "buttons": [{
+
               "type": "web_url",
               "url": "https://www.oculus.com/en-us/rift/",
-              "title": "Open Web URL"
+              "title": "Go to Webpage"
             }, {
-
+              
               "type": "postback",
-              "title": "Call Postback",
-              "payload": "Payload for second bubble",
+              "title": "See More",
+              "payload": "Payload for first bubble",
             }],
+          }, 
+
+          {
+          "title": "rift",
+          "subtitle": "Next-generation virtual reality",
+          "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
           }, {
-            "title": "touch",
-            "subtitle": "Your Hands, Now in VR",
-            "item_url": "https://www.oculus.com/en-us/touch/",
-            "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "Payload for first bubble",
+          }],
+          }, 
+
+          {
+          "title": "rift",
+          "subtitle": "Next-generation virtual reality",
+          "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "Payload for first bubble",
+          }],
+          }, 
+
+          {
+          "title": "rift",
+          "subtitle": "Next-generation virtual reality",
+          "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "Payload for first bubble",
+          }],
+          }, 
+
+          {
+            "title": "rift",
+            "subtitle": "Next-generation virtual reality",
+            "item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            
             "buttons": [{
+            
               "type": "web_url",
-              "url": "https://www.oculus.com/en-us/touch/",
-              "title": "Open Web URL"
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Go to Webpage"
             }, {
+              
               "type": "postback",
-              "title": "Call Postback",
-              "payload": "Payload for second bubble",
+              "title": "See More",
+              "payload": "Payload for first bubble",
             }]
           }]
         }
