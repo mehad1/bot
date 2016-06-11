@@ -46,6 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
+			          sendTextMessage(sender, "Here are some suggestions for the best iftar in Dhaka")
 			          iftarMessage(sender)
 			          continue
 			}
@@ -58,17 +59,20 @@ app.post('/webhook/', function (req, res) {
 			
 
 			else if (match.indexOf(discount) >= 0 && match.indexOf(offerbot) < 0) {
-			          sendTextMessage(sender, "best dicounts are here")
+			          sendTextMessage(sender, "These are some of exclusive offerbot discounts")
+			          offerMessage(sender)
 			          continue
 			}
 			
 			else if (match.indexOf(buy) >= 0 && match.indexOf(get1) >= 0) {
-				sendTextMessage(sender, "buy1 & get1 is here")
+				sendTextMessage(sender, "Here are some suggestions for the best buy1 & get1 deals")
+			          buyMessage(sender)
 				continue
 			}
 			
    			else if (match.indexOf(offerbot) >= 0 && match.indexOf(discount) >= 0) {
-			          sendTextMessage(sender, "offerbot discounts are here")
+			          sendTextMessage(sender, "Here are some good suggestions for discounts in Dhaka")
+			          discountMessage(sender)
 			          continue
 			}
 			
@@ -361,6 +365,154 @@ function iftarMessage(sender) {
   	})
   }
 
+function discountMessage(sender) {
+  let messageData = {
+
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            
+            "title": "3 Dragons",
+            "subtitle": "Rate: 5/5",
+            //"item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/Ndc5hTP.jpg",
+
+            "buttons": [{
+
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Go to Webpage"
+            }, {
+              
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "reserve",
+            }, {
+              
+              "type": "postback",
+              "title": "See More",
+              "payload": "westin",
+            }],
+          }, 
+
+          {
+          "title": "Fish&Co",
+          "subtitle": "Rate: 5/5",
+        //  "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/VGalslF.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "amari",
+          }],
+          }, 
+
+          {
+          "title": "Peda Ting Ting",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/or4DXS3.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "moka",
+          }],
+          }, 
+
+          {
+          "title": "Nandos",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/N0A57SO.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "water",
+          }],
+          }, 
+
+          {
+            "title": "Teastebud",
+            "subtitle": "Rate: 5/5",
+          //  "item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/f5RwbFm.jpg",
+            
+            "buttons": [{
+            
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Go to Webpage"
+            }, {
+
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "reserve",
+            }, {
+              
+              "type": "postback",
+              "title": "See More",
+              "payload": "glass",
+            }]
+          }]
+        }
+      }
+    }
+    request({
+  		url: 'https://graph.facebook.com/v2.6/me/messages',
+  		qs: {access_token:token},
+  		method: 'POST',
+  		json: {
+  			recipient: {id:sender},
+  			message: messageData,
+  		}
+  	}, function(error, response, body) {
+  		if (error) {
+  			console.log('Error sending messages: ', error)
+  		} else if (response.body.error) {
+  			console.log('Error: ', response.body.error)
+  		}
+  	})
+  }
+
+
 function imageWestin(sender) {
   let messageData = {
 
@@ -495,6 +647,153 @@ function imageWestin(sender) {
           		}
           	})
           }
+
+function offerMessage(sender) {
+  let messageData = {
+
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            
+            "title": "Fish&Co",
+            "subtitle": "Rate: 5/5",
+            //"item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/Jbu5Zpg.png",
+
+            "buttons": [{
+
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Go to Webpage"
+            }, {
+              
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "reserve",
+            }, {
+              
+              "type": "postback",
+              "title": "See More",
+              "payload": "westin",
+            }],
+          }, 
+
+          {
+          "title": "Le meredien",
+          "subtitle": "Rate: 5/5",
+        //  "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/nmTKPYe.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "amari",
+          }],
+          }, 
+
+          {
+          "title": "Peda Ting Ting",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/or4DXS3.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "moka",
+          }],
+          }, 
+
+          {
+          "title": "Nandos",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/N0A57SO.jpg",
+          
+          "buttons": [{
+          
+            "type": "web_url",
+            "url": "https://www.oculus.com/en-us/rift/",
+            "title": "Go to Webpage"
+          }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
+            
+            "type": "postback",
+            "title": "See More",
+            "payload": "water",
+          }],
+          }, 
+
+          {
+            "title": "The Glasshouse Brassiere",
+            "subtitle": "Rate: 5/5",
+          //  "item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/lkq6JdE.jpg",
+            
+            "buttons": [{
+            
+              "type": "web_url",
+              "url": "https://www.oculus.com/en-us/rift/",
+              "title": "Go to Webpage"
+            }, {
+
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "reserve",
+            }, {
+              
+              "type": "postback",
+              "title": "See More",
+              "payload": "glass",
+            }]
+          }]
+        }
+      }
+    }
+    request({
+  		url: 'https://graph.facebook.com/v2.6/me/messages',
+  		qs: {access_token:token},
+  		method: 'POST',
+  		json: {
+  			recipient: {id:sender},
+  			message: messageData,
+  		}
+  	}, function(error, response, body) {
+  		if (error) {
+  			console.log('Error sending messages: ', error)
+  		} else if (response.body.error) {
+  			console.log('Error: ', response.body.error)
+  		}
+  	})
+  }
 
 
 function welcomeMessage2(sender) {
