@@ -32,17 +32,18 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		let match = "best"
+		let match = "iftar"
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			let shafin = text.toLowerCase()
-			let best="False"
 			
-		//	if (text.indexOf(match) >= 0) {
-		//	          let best="True"
-		//	          continue
-		//	}
+			let matc
+			
+			if (shafin.indexOf(match) >= 0) {
+			          sendTextMessage(sender, "iftar is here")
+			          continue
+			}
 			
 			
 			if (text === 'Iftar') {
