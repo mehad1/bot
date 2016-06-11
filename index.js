@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
-			          sendTextMessage(sender, "help is here")
+			          iftarMessage(sender)
 			          continue
 			}
 		
@@ -178,6 +178,7 @@ function sendImageMessage(sender) {
   		}
   	})
   }
+
 
 
 function iftarMessage(sender) {
@@ -326,7 +327,6 @@ function iftarMessage(sender) {
   		}
   	})
   }
-
 
 
 
