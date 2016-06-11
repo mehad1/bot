@@ -86,26 +86,31 @@ app.post('/webhook/', function (req, res) {
 			}
 
 			else if (text === '{"payload":"westin"}') {
-			sendTextMessage(sender, "Relish Ramadan with Westin’s specialty Kebabs, Orange Saffron Jalebis and Haleem \n Taste of Ramadan | Buffet | Iftar and Dinner | BDT 4,999 Net\nIftar Bonanza | Buffet | Iftar and Dinner | BDT 3,500 Net\nIftar Treats and Takeaway | Iftar | BDT 1,600Net")
+				imageWestin(sender)
+			sendTextMessage(sender, "Relish Ramadan with Westin’s specialty Kebabs, Orange Saffron Jalebis and Haleem \nTaste of Ramadan | Buffet | Iftar and Dinner | BDT 4,999 Net\nIftar Bonanza | Buffet | Iftar and Dinner | BDT 3,500 Net\nIftar Treats and Takeaway | Iftar | BDT 1,600Net")
 			continue
 			}
 
 			else if (text === '{"payload":"amari"}') {
-			sendTextMessage(sender, "Celebrate the breaking of fast with us \n Take away Iftar | BDT 1,650++ \nCascade Iftar and Suhoor Delights | BDT 1,800++\nBanquet Delights | Staring from BDT 1,900++\n")
+				imageAmari(sender)
+			sendTextMessage(sender, "Celebrate the breaking of fast with us \nTake away Iftar | BDT 1,650++ \nCascade Iftar and Suhoor Delights | BDT 1,800++\nBanquet Delights | Staring from BDT 1,900++\n")
 			continue
 			}
 
 			else if (text === '{"payload":"glass"}') {
+				imageGlass(sender)
 			sendTextMessage(sender, "Savor the spirit of Ramadan with our special Iftar and Dinner Buffet at BDT 1,499 NET ")
 			continue
 			}
 
 			else if (text === '{"payload":"water"}') {
+			imageWater(sender)
 			sendTextMessage(sender, "Ramadan Kareem with incredible Iftar Buffet for BDT 1,295++")
 			continue
 			}
 
 			else if (text === '{"payload":"moka"}') {
+			imageMoka(sender)
 			sendTextMessage(sender, "MOKA Bistro Presents IFTAR and DINNER BUFFET for Ramadan 2016 specially priced at BDT999++")
 			continue
 			}
@@ -351,6 +356,140 @@ function iftarMessage(sender) {
   	})
   }
 
+function imageWestin(sender) {
+  let messageData = {
+
+      "attachment": {
+        "type": "image",
+        "payload": {
+          "url": "http://i.imgur.com/rmgOfcV.jpg"
+        }
+      }
+    }
+    request({
+  		url: 'https://graph.facebook.com/v2.6/me/messages',
+  		qs: {access_token:token},
+  		method: 'POST',
+  		json: {
+  			recipient: {id:sender},
+  			message: messageData,
+  		}
+  	}, function(error, response, body) {
+  		if (error) {
+  			console.log('Error sending messages: ', error)
+  		} else if (response.body.error) {
+  			console.log('Error: ', response.body.error)
+  		}
+  	})
+  }
+
+  function imageAmari(sender) {
+    let messageData = {
+  
+        "attachment": {
+          "type": "image",
+          "payload": {
+            "url": "http://i.imgur.com/4IBS57N.jpg"
+          }
+        }
+      }
+      request({
+    		url: 'https://graph.facebook.com/v2.6/me/messages',
+    		qs: {access_token:token},
+    		method: 'POST',
+    		json: {
+    			recipient: {id:sender},
+    			message: messageData,
+    		}
+    	}, function(error, response, body) {
+    		if (error) {
+    			console.log('Error sending messages: ', error)
+    		} else if (response.body.error) {
+    			console.log('Error: ', response.body.error)
+    		}
+    	})
+    }
+
+    function imageGlass(sender) {
+      let messageData = {
+    
+          "attachment": {
+            "type": "image",
+            "payload": {
+              "url": "http://i.imgur.com/lkq6JdE.jpg"
+            }
+          }
+        }
+        request({
+      		url: 'https://graph.facebook.com/v2.6/me/messages',
+      		qs: {access_token:token},
+      		method: 'POST',
+      		json: {
+      			recipient: {id:sender},
+      			message: messageData,
+      		}
+      	}, function(error, response, body) {
+      		if (error) {
+      			console.log('Error sending messages: ', error)
+      		} else if (response.body.error) {
+      			console.log('Error: ', response.body.error)
+      		}
+      	})
+      }
+
+      function imageMoka(sender) {
+        let messageData = {
+      
+            "attachment": {
+              "type": "image",
+              "payload": {
+                "url": "http://i.imgur.com/QtmX7Yc.jpg"
+              }
+            }
+          }
+          request({
+        		url: 'https://graph.facebook.com/v2.6/me/messages',
+        		qs: {access_token:token},
+        		method: 'POST',
+        		json: {
+        			recipient: {id:sender},
+        			message: messageData,
+        		}
+        	}, function(error, response, body) {
+        		if (error) {
+        			console.log('Error sending messages: ', error)
+        		} else if (response.body.error) {
+        			console.log('Error: ', response.body.error)
+        		}
+        	})
+        }
+
+        function imageWater(sender) {
+          let messageData = {
+        
+              "attachment": {
+                "type": "image",
+                "payload": {
+                  "url": "http://i.imgur.com/myWalGX.jpg"
+                }
+              }
+            }
+            request({
+          		url: 'https://graph.facebook.com/v2.6/me/messages',
+          		qs: {access_token:token},
+          		method: 'POST',
+          		json: {
+          			recipient: {id:sender},
+          			message: messageData,
+          		}
+          	}, function(error, response, body) {
+          		if (error) {
+          			console.log('Error sending messages: ', error)
+          		} else if (response.body.error) {
+          			console.log('Error: ', response.body.error)
+          		}
+          	})
+          }
 
 
 function welcomeMessage2(sender) {
