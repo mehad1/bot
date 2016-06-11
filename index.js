@@ -236,11 +236,7 @@ function welcomeMessage2(sender) {
 		"type": "postback",
 		"title": "Buy 1 & Get 1",
 		"payload": "1.3"
-	}, {
-		"type": "postback",
-		"title": "Offerbot Discounts",
-		"payload": "1.4"
-					
+		
           }]
         }
       }
