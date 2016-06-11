@@ -234,7 +234,7 @@ function welcomeMessage2(sender) {
 		"payload": "1.2"
 	}, {
 		"type": "postback",
-		"title": "Buy 1 & Get 1",
+		"title": "Buy 1 & Get 1 Offer",
 		"payload": "1.3"
 		
           }]
