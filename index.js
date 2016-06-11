@@ -32,23 +32,22 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		let match = "iftar"
+		let iftar = "iftar"
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			let shafin = text.toLowerCase()
 			
-			let matc
 			
-			if (shafin.indexOf(match) >= 0) {
+			if (shafin.indexOf(iftar) >= 0) {
 			          sendTextMessage(sender, "iftar is here")
 			          continue
 			}
 			
 			
-			if (text === 'Iftar') {
+			else if (text === 'Iftar') {
 				sendTextMessage(sender, "it works")
-				//welcomeMessage2(sender)
+				welcomeMessage2(sender)
 				continue
 			}
 
@@ -62,8 +61,9 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			
-			sendTextMessage(sender, shafin+"  "+text)
+			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
+			delay(100)
 			welcomeMessage2(sender)
 			welcomeMessage3(sender)
 			}
@@ -235,7 +235,7 @@ function welcomeMessage2(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "You can ask me regarding the following inquiries",
+          "text": "You can simply ask by typing",
           
           "buttons":[{
             
@@ -279,7 +279,7 @@ function welcomeMessage3(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "You can also click on the buttons",
+          "text": "You can ask by clicking the buttons",
 
           "buttons":[{
 
