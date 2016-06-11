@@ -55,11 +55,7 @@ app.post('/webhook/', function (req, res) {
 			          continue
 			}
 			
-			else if (match.indexOf(website) >= 0) {
-			          "type": "postback"
-			          "payload":"12"
-			          continue
-			}
+			
 
 			else if (match.indexOf(discount) >= 0 && match.indexOf(offerbot) < 0) {
 			          sendTextMessage(sender, "best dicounts are here")
