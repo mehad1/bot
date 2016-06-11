@@ -37,15 +37,17 @@ app.post('/webhook/', function (req, res) {
 		if (event.message && event.message.text) {
 			let intext = event.message.text
 			let text = intext.toLowerCase()
+			let best="False"
 			
 			if (text.indexOf(match) >= 0) {
-			          let best="True";
-			} else {
-				  let best="False";
+			          let best="True"
+			          continue
 			}
+			
+			
 			if (best === 'True') {
 				sendTextMessage(sender, "it works")
-				welcomeMessage2(sender)
+				//welcomeMessage2(sender)
 				continue
 			}
 
