@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
-			          sendGenericMessage(sender)
+			          iftar(sender)
 			          continue
 			}
 		
@@ -180,7 +180,7 @@ function sendImageMessage(sender) {
   }
 
 
-function sendGenericMessage(sender) {
+function iftar(sender) {
   let messageData = {
 
       "attachment": {
@@ -189,34 +189,34 @@ function sendGenericMessage(sender) {
           "template_type": "generic",
           "elements": [{
             
-            "title": "rift",
-            "subtitle": "Next-generation virtual reality",
-            "item_url": "https://www.oculus.com/en-us/rift/",
-            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "title": "The Westin",
+            "subtitle": "Rate: 5/5",
+            //"item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/rmgOfcV.jpg",
 
             "buttons": [{
 
               "type": "web_url",
               "url": "https://www.oculus.com/en-us/rift/",
               "title": "Go to Webpage"
-            }, {
-              
-              "type": "postback",
-              "title": "See More",
-              "payload": "Payload for first bubble",
             }, {
               
               "type": "postback",
               "title": "Reservation",
-              "payload": "Payload for first bubble",
+              "payload": "reserve",
+            }, {
+              
+              "type": "postback",
+              "title": "See More",
+              "payload": "westin",
             }],
           }, 
 
           {
-          "title": "rift",
-          "subtitle": "Next-generation virtual reality",
-          "item_url": "https://www.oculus.com/en-us/rift/",
-          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          "title": "Amari",
+          "subtitle": "Rate: 5/5",
+        //  "item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/4IBS57N.jpg",
           
           "buttons": [{
           
@@ -224,18 +224,23 @@ function sendGenericMessage(sender) {
             "url": "https://www.oculus.com/en-us/rift/",
             "title": "Go to Webpage"
           }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
             
             "type": "postback",
             "title": "See More",
-            "payload": "Payload for first bubble",
+            "payload": "amari",
           }],
           }, 
 
           {
-          "title": "rift",
-          "subtitle": "Next-generation virtual reality",
-          "item_url": "https://www.oculus.com/en-us/rift/",
-          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          "title": "MOKA Bistro",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/QtmX7Yc.jpg",
           
           "buttons": [{
           
@@ -243,18 +248,23 @@ function sendGenericMessage(sender) {
             "url": "https://www.oculus.com/en-us/rift/",
             "title": "Go to Webpage"
           }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
             
             "type": "postback",
             "title": "See More",
-            "payload": "Payload for first bubble",
+            "payload": "moka",
           }],
           }, 
 
           {
-          "title": "rift",
-          "subtitle": "Next-generation virtual reality",
-          "item_url": "https://www.oculus.com/en-us/rift/",
-          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          "title": "Watercress Restaurant",
+          "subtitle": "Rate: 5/5",
+          //"item_url": "https://www.oculus.com/en-us/rift/",
+          "image_url": "http://i.imgur.com/myWalGX.jpg",
           
           "buttons": [{
           
@@ -262,18 +272,23 @@ function sendGenericMessage(sender) {
             "url": "https://www.oculus.com/en-us/rift/",
             "title": "Go to Webpage"
           }, {
+
+            "type": "postback",
+            "title": "Reservation",
+            "payload": "reserve",
+          }, {
             
             "type": "postback",
             "title": "See More",
-            "payload": "Payload for first bubble",
+            "payload": "water",
           }],
           }, 
 
           {
-            "title": "rift",
-            "subtitle": "Next-generation virtual reality",
-            "item_url": "https://www.oculus.com/en-us/rift/",
-            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "title": "The Glasshouse Brassiere",
+            "subtitle": "Rate: 5/5",
+          //  "item_url": "https://www.oculus.com/en-us/rift/",
+            "image_url": "http://i.imgur.com/lkq6JdE.jpg",
             
             "buttons": [{
             
@@ -281,10 +296,15 @@ function sendGenericMessage(sender) {
               "url": "https://www.oculus.com/en-us/rift/",
               "title": "Go to Webpage"
             }, {
+
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "reserve",
+            }, {
               
               "type": "postback",
               "title": "See More",
-              "payload": "Payload for first bubble",
+              "payload": "glass",
             }]
           }]
         }
@@ -306,6 +326,7 @@ function sendGenericMessage(sender) {
   		}
   	})
   }
+
 
 
 
