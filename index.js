@@ -35,8 +35,8 @@ app.post('/webhook/', function (req, res) {
 		let match = "best"
 		
 		if (event.message && event.message.text) {
-			let intext = event.message.text
-			let text = intext.toLowerCase()
+			let text = event.message.text
+			let shafin = text.toLowerCase()
 			let best="False"
 			
 		//	if (text.indexOf(match) >= 0) {
@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
 		//	}
 			
 			
-			if (best === 'True') {
+			if (text === 'Iftar') {
 				sendTextMessage(sender, "it works")
 				//welcomeMessage2(sender)
 				continue
