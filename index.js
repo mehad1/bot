@@ -50,6 +50,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
+			sendGenericMessage(sender)
 			welcomeMessage2(sender)
 			}
 		if (event.postback) {
