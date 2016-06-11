@@ -33,39 +33,51 @@ app.post('/webhook/', function (req, res) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
 		let iftar = "iftar"
+		let discount = "discount"
+		let offerbot = "offerbot"
+		let buy = "buy"
+		let get1 = "get"
+		let help = "help"
+		let settings = "settings"
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			let shafin = text.toLowerCase()
+			let match = text.toLowerCase()
 			
 			
-			if (shafin.indexOf(iftar) >= 0) {
+			if (match.indexOf(iftar) >= 0) {
 			          sendTextMessage(sender, "iftar is here")
 			          continue
 			}
 			
-			
-			else if (text === 'Iftar') {
-				sendTextMessage(sender, "it works")
-				welcomeMessage2(sender)
-				continue
-			}
-
-			else if (text === 'Button') {
-				sendButtonMessage(sender)
-				continue
-			}
-
-			else if (text === 'Image') {
-				sendImageMessage(sender)
-				continue
+			else if (match.indexOf(discount) >= 0 && shafin.indexOf(offerbot) < 0) {
+			          sendTextMessage(sender, "best dicounts are here")
+			          continue
 			}
 			
+			else if (match.indexOf(buy) >= 0 && shafin.indexOf(get1) >= 0) {
+			          sendTextMessage(sender, "buy1 & get1 is here")
+			          continue
+			}
+			
+			else if (match.indexOf(offerbot) >= 0 && shafin.indexOf(discount) >= 0) {
+			          sendTextMessage(sender, "offerbot discount is here")
+			          continue
+			}
+			
+			else if (match.indexOf(help) >= 0) {
+			          sendTextMessage(sender, "help is here")
+			          continue
+			}
+			
+			else if (match.indexOf(settings) >= 0) {
+			          sendTextMessage(sender, "settings is here")
+			          continue
+			}
 			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
 			welcomeMessage2(sender)
-			setTimeout(welcomeMessage3(sender), 10000)
-			//welcomeMessage3(sender)
+			welcomeMessage3(sender)
 			}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
