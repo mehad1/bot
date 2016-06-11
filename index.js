@@ -221,7 +221,7 @@ function welcomeMessage2(sender) {
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "This is test text",
+          "text": "Ask me regarding the following by simply typing or clicking the buttons",
           
           "buttons":[{
             
@@ -236,6 +236,10 @@ function welcomeMessage2(sender) {
 		"type": "postback",
 		"title": "Buy 1 & Get 1",
 		"payload": "1.3"
+	}, {
+		"type": "postback",
+		"title": "Offerbot Discounts",
+		"payload": "1.4"
 					
           }]
         }
