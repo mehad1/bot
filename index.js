@@ -63,15 +63,9 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			sendTextMessage(sender,"Hello! I am Offerbot \nI'm here to guide you for the best dining expreience in the city. I'll show you the best deals and reviews to provide you the satisfation you deserve.")
-			try {
-			 Thread.sleep(3000)    
-			 continue
-			} catch(InterruptedException ex) {
-			   Thread.currentThread().interrupt()
-			   continue
-			}
 			welcomeMessage2(sender)
-			welcomeMessage3(sender)
+			setTimeout(welcomeMessage3(sender), 3000)
+			//welcomeMessage3(sender)
 			}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
