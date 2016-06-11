@@ -108,6 +108,11 @@ app.post('/webhook/', function (req, res) {
 			sendTextMessage(sender, "Ramadan Kareem with incredible Iftar Buffet for BDT 1,295++")
 			continue
 			}
+			
+			else if (text === '{"payload":"iftar"}') {
+			iftarMessage(sender)
+			continue
+			}
 
 			else if (text === '{"payload":"moka"}') {
 			imageMoka(sender)
@@ -505,7 +510,7 @@ function welcomeMessage2(sender) {
             
 	      "type": "postback",
 	      "title": "Best iftar in Dhaka",
-	      "payload": "1.1"
+	      "payload": "iftar"
 	}, {
 		"type": "postback",
 		"title": "Best Discount offer",
