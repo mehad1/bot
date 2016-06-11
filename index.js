@@ -226,12 +226,16 @@ function welcomeMessage2(sender) {
           "buttons":[{
             
 	      "type": "postback",
-	      "title": "1. Best iftar in Dhaka",
+	      "title": "Best iftar in Dhaka",
 	      "payload": "1.1"
 	}, {
 		"type": "postback",
-		"title": "2. Best discounts offers in Dhaka",
+		"title": "Best Discount offer",
 		"payload": "1.2"
+	}, {
+		"type": "postback",
+		"title": "Buy 1 & Get 1",
+		"payload": "1.3"
 					
           }]
         }
