@@ -204,6 +204,11 @@ function sendGenericMessage(sender) {
               "type": "postback",
               "title": "See More",
               "payload": "Payload for first bubble",
+            }, {
+              
+              "type": "postback",
+              "title": "Reservation",
+              "payload": "Payload for first bubble",
             }],
           }, 
 
