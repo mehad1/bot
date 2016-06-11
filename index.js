@@ -38,7 +38,7 @@ app.post('/webhook/', function (req, res) {
 		let buy = "buy"
 		let get1 = "get"
 		let help = "help"
-		let settings = "settings"
+		let website = "website"
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
@@ -52,6 +52,12 @@ app.post('/webhook/', function (req, res) {
 		
 			else if (match.indexOf(help) >= 0) {
 			          sendTextMessage(sender, "help is here")
+			          continue
+			}
+			
+			else if (match.indexOf(website) >= 0) {
+			          "type": "postback"
+			          "payload":"12"
 			          continue
 			}
 
@@ -301,7 +307,7 @@ function welcomeMessage3(sender) {
             "title": "Visit Website"
           }, {
             "type": "postback",
-            "title": "Settings",
+            "title": "Help",
             "payload": "1.6"
           
 
