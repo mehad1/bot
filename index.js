@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			if (match.indexOf(iftar) >= 0) {
-			          iftarMessage(sender)
+			          sendTextMessage(sender, "help is here")
 			          continue
 			}
 		
