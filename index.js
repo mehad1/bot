@@ -39,6 +39,7 @@ app.post('/webhook/', function (req, res) {
 		let get1 = "get"
 		let help = "help"
 		let website = "website"
+		let time = process.hrtime
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
@@ -52,7 +53,11 @@ app.post('/webhook/', function (req, res) {
 			}
 		
 			else if (match.indexOf(help) >= 0) {
-			          sendTextMessage(sender, "help is here")
+				
+			          sendTextMessage(sender, sender)
+			          sendTextMessage(sender, recipient)
+			          sendTextMessage(sender, time)
+			          
 			          continue
 			}
 			
