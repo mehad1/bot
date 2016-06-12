@@ -39,7 +39,7 @@ app.post('/webhook/', function (req, res) {
 		let get1 = "get"
 		let help = "help"
 		let website = "website"
-		let time = process.hrtime
+		
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
@@ -56,7 +56,7 @@ app.post('/webhook/', function (req, res) {
 				
 			          sendTextMessage(sender, sender)
 			          sendTextMessage(sender, recipient)
-			          sendTextMessage(sender, time)
+			          
 			          
 			          continue
 			}
