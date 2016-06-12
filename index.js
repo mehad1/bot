@@ -54,8 +54,7 @@ app.post('/webhook/', function (req, res) {
 		
 			else if (match.indexOf(help) >= 0) {
 				
-			          sendTextMessage(sender, sender)
-			          sendTextMessage(sender, recipient)
+			          sendTextMessage(sender, "help")
 			          
 			          
 			          continue
